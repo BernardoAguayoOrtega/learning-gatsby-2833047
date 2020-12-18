@@ -3,19 +3,17 @@ import { Link } from "gatsby"
 
 import style from "./mainnav.module.css"
 
-const MainNav = () => {
+const MainNav = ({ links }) => {
+  console.log(links)
+
   return (
     <nav className={style.navigation}>
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/events">Events</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
+        {links?.map(element => (
+          <li>
+            <Link to={element?.link}>{element?.name}</Link>
+          </li>
+        ))}
       </ul>
     </nav>
   )
